@@ -1,5 +1,5 @@
 # lexical_restriction
-
+```
 usage: lexical_restriction.py [-h] [--source_db SOURCE_DB]
                             [--target_db TARGET_DB]
                             [--source_table SOURCE_TABLE]
@@ -17,7 +17,9 @@ usage: lexical_restriction.py [-h] [--source_db SOURCE_DB]
                             [--source_dir SOURCE_DIR]
                             [--target_dir TARGET_DIR] [--output_stats]
                             [--debug]
+```
 
+```
 Restrict an n-gram feature set by only keeping tokens that occur similarly
 frequently in both datasets.
 
@@ -70,3 +72,4 @@ optional arguments:
                         dlatk table.
   --output_stats        Return scores rather than prefiltering.
   --debug               Enable debug output 
+```
