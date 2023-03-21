@@ -1,5 +1,9 @@
 # lexical_restriction
 
+Restrict an n-gram feature set by only keeping tokens that occur similarly
+frequently, according to both binomial (count) and boolean (zero-inflation), 
+in distributions of both datasets.
+
 ## Basic Example:
 ```
 python3 ngram_restriction.py --source_csv /data/DIR/SOURCE_MSG_TABLE.csv 
@@ -9,9 +13,6 @@ python3 ngram_restriction.py --source_csv /data/DIR/SOURCE_MSG_TABLE.csv
 
 ## All Argument Descriptions
 ```
-Restrict an n-gram feature set by only keeping tokens that occur similarly
-frequently in both datasets.
-
 optional arguments:
   -h, --help            show this help message and exit
   --source_db SOURCE_DB
