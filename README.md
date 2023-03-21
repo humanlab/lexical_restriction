@@ -1,24 +1,13 @@
 # lexical_restriction
+
+## Basic Example:
 ```
-usage: lexical_restriction.py [-h] [--source_db SOURCE_DB]
-                            [--target_db TARGET_DB]
-                            [--source_table SOURCE_TABLE]
-                            [--target_table TARGET_TABLE]
-                            [--freq_variable FREQ_VARIABLE]
-                            [--sparse_threshold SPARSE_THRESHOLD]
-                            [--stdev_threshold STDEV_THRESHOLD]
-                            [--output OUTPUT]
-                            [--combined_feat_set COMBINED_FEAT_SET]
-                            [--filter_csv FILTER_CSV]
-                            [--filter_csv_colname FILTER_CSV_COLNAME]
-                            [--zero_removed ZERO_REMOVED]
-                            [--source_csv SOURCE_CSV]
-                            [--target_csv TARGET_CSV]
-                            [--source_dir SOURCE_DIR]
-                            [--target_dir TARGET_DIR] [--output_stats]
-                            [--debug]
+python3 ngram_restriction.py --source_csv /data/DIR/SOURCE_MSG_TABLE.csv 
+                             --target_csv /data/DIR/TARGET_MSG_TABLE.csv 
+                             --output_stats --debug --output /data/DIR/WORD_STATS.csv
 ```
 
+## All Argument Descriptions
 ```
 Restrict an n-gram feature set by only keeping tokens that occur similarly
 frequently in both datasets.
