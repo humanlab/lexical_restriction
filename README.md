@@ -1,8 +1,11 @@
 # lexical_restriction
 
-Restrict an n-gram feature set by only keeping tokens that occur similarly
+Used for restricting an n-gram feature set by only keeping tokens that occur similarly
 frequently, according to both binomial (count) and boolean (zero-inflation), 
 in distributions of both datasets.
+
+Output is statistics for every token that appears in both the source feature table 
+and target feature table. The statistics can then be thresholded to select features.
 
 ## Basic Example:
 ```
