@@ -3,6 +3,10 @@
 Used for restricting an n-gram feature set (i.e. a lexicon) by only keeping ngrams that occur with similar frequency, according to both binomial (count) and boolean (zero-inflation) distribution statistics for both datasets (`source` and `target`).
 
 Default output is list of filtered ngrams with their statistics. 
+
+The Default frequency thresholds are ones found somewhat effective 
+for adapting from social media (Facebook) to spoken language 
+(oral history interviews). 
 If specifying `--output_stats` then statistics for every ngram 
 that appears in both the source feature table and target feature 
 table will be output so one can then threshold to select features.
