@@ -1,8 +1,6 @@
 # lexical_restriction
 
-Used for restricting an n-gram feature set by only keeping tokens that occur similarly
-frequently, according to both binomial (count) and boolean (zero-inflation), 
-in distributions of both datasets.
+Used for restricting an n-gram feature set (i.e. a lexicon) by only keeping ngrams that occur with similar frequency, according to both binomial (count) and boolean (zero-inflation) distribution statistics for both datasets (`source` and `target`).
 
 Default output is list of filtered ngrams with their statistics. 
 If specifying `--output_stats` then statistics for every ngram 
