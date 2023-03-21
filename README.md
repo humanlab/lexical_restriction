@@ -7,10 +7,20 @@ in distributions of both datasets.
 Output is statistics for every token that appears in both the source feature table 
 and target feature table. The statistics can then be thresholded to select features.
 
-## Basic Example:
+## Basic Examples:
+
+Using csvs:
 ```
-python3 ngram_restriction.py --source_csv /data/DIR/SOURCE_MSG_TABLE.csv 
-                             --target_csv /data/DIR/TARGET_MSG_TABLE.csv 
+python3 ngram_restriction.py --source_csv /data/DIR/SOURCE_NGRAM_TABLE.csv 
+                             --target_csv /data/DIR/TARGET_NGRAM_TABLE.csv 
+                             [--filter_csv LEXICON]
+                             --output_stats --debug --output /data/DIR/WORD_STATS.csv
+```
+
+Using mysql
+```
+python3 ngram_restriction.py --source_db SDB --source_table SOURCE_NGRAM_TABLE 
+                             --target_db TDB --target_table TARGET_NGRAM_TABLE
                              --output_stats --debug --output /data/DIR/WORD_STATS.csv
 ```
 
@@ -46,10 +56,9 @@ optional arguments:
                         specified, will be flushed to stdout.
   --combined_feat_set COMBINED_FEAT_SET
   --filter_csv FILTER_CSV
-                        A csv where the FEAT column gives a list of valid
-                        tokens
+                        Optional flag to pass in an `allowlist' of ngrams (i.e. a lexicon). 
   --filter_csv_colname FILTER_CSV_COLNAME
-                        Column name for filter csv
+                        The column from filter_csv that contains the ngrams.
   --zero_removed ZERO_REMOVED
                         For the stdev threshold, determines whether or not to
                         reweight mean and variance to ignore zero entries.
