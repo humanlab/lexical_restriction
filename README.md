@@ -4,8 +4,10 @@ Used for restricting an n-gram feature set by only keeping tokens that occur sim
 frequently, according to both binomial (count) and boolean (zero-inflation), 
 in distributions of both datasets.
 
-Output is statistics for every token that appears in both the source feature table 
-and target feature table. The statistics can then be thresholded to select features.
+Default output is list of filtered ngrams with their statistics. 
+If specifying `--output_stats` then statistics for every ngram 
+that appears in both the source feature table and target feature 
+table will be output so one can then threshold to select features.
 
 ## Basic Examples:
 
