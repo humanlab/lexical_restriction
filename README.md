@@ -15,16 +15,16 @@ table will be output so one can then threshold to select features.
 
 Using csvs:
 ```
-python3 ngram_restriction.py --source_csv /data/DIR/SOURCE_NGRAM_TABLE.csv 
-                             --target_csv /data/DIR/TARGET_NGRAM_TABLE.csv 
-                             [--filter_csv LEXICON]
+python3 ngram_restriction.py --source_csv /data/DIR/SOURCE_NGRAM_TABLE.csv \
+                             --target_csv /data/DIR/TARGET_NGRAM_TABLE.csv \
+                             [--filter_csv LEXICON] \
                              --output_stats --debug --output /data/DIR/WORD_STATS.csv
 ```
 
 Using mysql
 ```
-python3 ngram_restriction.py --source_db SDB --source_table SOURCE_NGRAM_TABLE 
-                             --target_db TDB --target_table TARGET_NGRAM_TABLE
+python3 ngram_restriction.py --source_db SDB --source_table SOURCE_NGRAM_TABLE \
+                             --target_db TDB --target_table TARGET_NGRAM_TABLE \
                              --output_stats --debug --output /data/DIR/WORD_STATS.csv
 ```
 
