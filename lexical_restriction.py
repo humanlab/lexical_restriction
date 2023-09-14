@@ -143,6 +143,8 @@ def get_word_statistics(source_matrix,
         pd.DataFrame: [description]
     """
     # 16to1 representations
+    # get a set for source matrics and a set for target matrix
+    
     source_usage_matrix = source_matrix != 0
     target_usage_matrix = target_matrix != 0
 
@@ -302,20 +304,15 @@ if __name__ == "__main__":
         parser.print_help()
         exit()
 
-
-    if args.filter_csv:
-        filter_grams = pd.read_csv(args.filter_csv).set_index(args.filter_csv_colname)
-        filter_grams = filter_grams.index
-
     if args.source_csv:
         source_gram_df = pd.read_csv(args.source_csv)
         source_gram_df[FEAT] = source_gram_df[FEAT].astype("str")
         source_gram_df[args.freq_variable] = source_gram_df[args.freq_variable].astype("float32")
     if args.target_csv:
-        target_gram_df = pd.read_csv(args.target_csv)
+        target_gram_df = pd.read_csv(args.target_csv, encoding="latin1")
         target_gram_df[FEAT] = target_gram_df[FEAT].astype("str")
         target_gram_df[args.freq_variable] = target_gram_df[args.freq_variable].astype("float32")
-
+        
     if (args.source_db and args.source_table):
         source_gram_df = sql_to_dataframe(args.source_db, args.source_table)
     if (args.target_db and args.target_table):
@@ -333,14 +330,19 @@ if __name__ == "__main__":
         print("Must specify input files!")
 
     if args.filter_csv:
-        target_gram_df = target_gram_df[target_gram_df[FEAT].isin(filter_grams)]
-        source_gram_df = source_gram_df[source_gram_df[FEAT].isin(filter_grams)]
+        filter_grams = pd.read_csv(args.filter_csv).set_index(args.filter_csv_colname)
+        filter_grams = filter_grams.index
+    else:
+        filter_grams = set(source_gram_df[FEAT]).intersection(set(target_gram_df[FEAT]))
+        
+    target_gram_df = target_gram_df[target_gram_df[FEAT].isin(filter_grams)]
+    source_gram_df = source_gram_df[source_gram_df[FEAT].isin(filter_grams)]
     source_sparse_matrix, target_sparse_matrix, combined_feat_list = get_sparse_matrices(
         source_gram_df,
         target_gram_df,
         combined_feat_set=args.combined_feat_set,
         count_var=args.freq_variable
-    )
+    )   
     statistics = get_word_statistics(
         source_sparse_matrix,
         target_sparse_matrix,
